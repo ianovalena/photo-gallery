@@ -1,0 +1,13 @@
+.app-header{
+  &__link {
+    margin: 10px;
+
+    &:first-of-type {
+      margin-left: 20px;
+    }
+  }
+
+  &__title {
+    margin-bottom: 6px;
+  }
+}
