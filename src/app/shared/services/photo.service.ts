@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { catchError, delay, map, Observable, of } from 'rxjs';
 import { IPhoto } from '../types/photo';
 import { HttpClient } from '@angular/common/http';
+import { getDelay } from './random-delay.helper';
 
 @Injectable({
   providedIn: 'root'
@@ -18,13 +19,13 @@ export class PhotoService {
       .pipe(
         map(photos => photos.map(({id}) => ({ id, url: PhotoService.getPhotoUrl(id) }))),
         catchError(() => of([])),
-        delay(600)
+        delay(getDelay())
       )
   }
 
   getPhotosById(ids: number[]): Observable<IPhoto[]> {
     return of(ids.map(id => ({ id, url: PhotoService.getPhotoUrl(id) })))
-      .pipe(delay(300));
+      .pipe(delay(getDelay()));
   }
 
   getPhoto(id: number, size?: string): Observable<IPhoto> {
@@ -32,7 +33,7 @@ export class PhotoService {
       id,
       url: PhotoService.getPhotoUrl(id, size)
     };
-    return of(photo).pipe(delay(300));
+    return of(photo).pipe(delay(getDelay()));
   }
 
   private static getPhotoUrl(id: number, size?: string): string {
