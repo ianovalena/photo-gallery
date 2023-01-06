@@ -1,0 +1,11 @@
+.cards{
+  &__container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  &__item {
+    margin: 10px;
+  }
+}

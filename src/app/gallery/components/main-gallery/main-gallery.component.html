@@ -1,1 +1,4 @@
-<p>main-gallery works!</p>
+<app-cards-list [photos]="photos"></app-cards-list>
+<div class="gallery__spinner-container">
+  <mat-spinner *ngIf="showSpinner" [diameter]="30"></mat-spinner>
+</div>
