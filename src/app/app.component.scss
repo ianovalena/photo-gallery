@@ -1,4 +1,10 @@
-.app-header{
+.app-container {
+  padding-top: 70px;
+}
+
+.app-header {
+  position: fixed;
+
   &__link {
     margin: 10px;
 
