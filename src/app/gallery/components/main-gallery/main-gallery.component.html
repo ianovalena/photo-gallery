@@ -1,4 +1,4 @@
-<app-cards-list [photos]="photos"></app-cards-list>
+<app-cards-list [photos]="photos" (onCardClick)="addToFavorites($event)"></app-cards-list>
 <div class="gallery__spinner-container">
   <mat-spinner *ngIf="showSpinner" [diameter]="30"></mat-spinner>
 </div>

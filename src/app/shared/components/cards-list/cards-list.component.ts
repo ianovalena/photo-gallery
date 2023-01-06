@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { IPhoto } from '../../types/photo';
 
 @Component({
@@ -9,6 +9,7 @@ import { IPhoto } from '../../types/photo';
 })
 export class CardsListComponent {
   @Input() photos!: IPhoto[];
+  @Output() onCardClick: EventEmitter<number> = new EventEmitter<number>();
 
   trackById(index: number, photo: IPhoto) {
     return photo.id;

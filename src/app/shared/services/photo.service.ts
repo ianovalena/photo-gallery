@@ -22,6 +22,11 @@ export class PhotoService {
       )
   }
 
+  getPhotosById(ids: number[]): Observable<IPhoto[]> {
+    return of(ids.map(id => ({ id, url: PhotoService.getPhotoUrl(id) })))
+      .pipe(delay(300));
+  }
+
   getPhoto(id: number, size?: string): Observable<IPhoto> {
     const photo = {
       id,

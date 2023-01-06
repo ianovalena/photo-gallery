@@ -3,6 +3,7 @@ import { PhotoService } from '../../../shared/services/photo.service';
 import { IPhoto } from '../../../shared/types/photo';
 import { Subject } from 'rxjs';
 import { createScrolledDownSubscription } from './scroll-utils';
+import { FavoritesService } from '../../../shared/services/favorites.service';
 
 @Component({
   selector: 'app-main-gallery',
@@ -18,12 +19,17 @@ export class MainGalleryComponent implements OnInit, OnDestroy {
 
   constructor(
     private photoService: PhotoService,
+    private favoritesService: FavoritesService,
     private zone: NgZone,
   ) {}
 
   ngOnInit() {
     this.loadNewPhotos();
     this.setupScroll();
+  }
+
+  addToFavorites(id: number) {
+    this.favoritesService.saveToFavorites(id).subscribe(() => { console.log('saved to favorites!'); });
   }
 
   private loadNewPhotos() {
