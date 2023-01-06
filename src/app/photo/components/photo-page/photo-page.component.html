@@ -1,0 +1,12 @@
+<div *ngIf="isLoading; else content" class="photo-page__spinner-container">
+  <mat-spinner [diameter]="70"></mat-spinner>
+</div>
+
+<ng-template #content>
+  <div class="photo-page__content">
+    <img [src]="photo.url" alt="You're favorite photo or not" class="photo-page__photo">
+    <button mat-button [disabled]="isUpdating" class="photo-page__button mat-accent" (click)="onFavoritesToggle()">
+      {{ isFavorite ? 'Remove from Favorites' : 'Add to Favorites' }}
+    </button>
+  </div>
+</ng-template>

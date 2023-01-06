@@ -1,0 +1,24 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { PhotoCardComponent } from './photo-card.component';
+
+describe('PhotoCardComponent', () => {
+  let component: PhotoCardComponent;
+  let fixture: ComponentFixture<PhotoCardComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [ PhotoCardComponent ]
+    })
+    .compileComponents();
+
+    fixture = TestBed.createComponent(PhotoCardComponent);
+    component = fixture.componentInstance;
+    component.photo = { id: 1, url: 'test/url/id/1' }
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

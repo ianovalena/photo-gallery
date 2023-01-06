@@ -1,0 +1,5 @@
+<div class="cards__container">
+  <app-photo-card *ngFor="let photo of photos; trackBy: trackById"
+                  [photo]="photo" class="cards__item"
+                  (click)="onCardClick.emit(photo.id)"></app-photo-card>
+</div>
