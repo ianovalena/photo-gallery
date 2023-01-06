@@ -3,6 +3,7 @@ import { fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { PhotoService } from './photo.service';
 import { HttpClient } from '@angular/common/http';
 import { of, throwError } from 'rxjs';
+import { MAX_REQUEST_DELAY } from './random-delay.helper';
 
 describe('PhotoService', () => {
   let service: PhotoService;
@@ -26,13 +27,13 @@ describe('PhotoService', () => {
         { id: 2, url: 'https://picsum.photos/id/2/300'}
       ]);
     });
-    tick(600);
+    tick(MAX_REQUEST_DELAY);
   }));
 
   it('should call list api with limit and page', fakeAsync(() => {
     getSpy.and.returnValue(of([]));
     service.getPhotos(3, 10).subscribe();
-    tick(600);
+    tick(MAX_REQUEST_DELAY);
     expect(getSpy).toHaveBeenCalledOnceWith('https://picsum.photos/v2/list?page=3&limit=10');
   }));
 
@@ -41,14 +42,14 @@ describe('PhotoService', () => {
     service.getPhotos(3, 10).subscribe(result => {
       expect(result.length).toBe(0);
     });
-    tick(600);
+    tick(MAX_REQUEST_DELAY);
   }));
 
   it('should return photo with default size', fakeAsync(() => {
     service.getPhoto(1).subscribe(result => {
       expect(result.url.includes(PhotoService.DEFAULT_SIZE)).toBeTruthy();
     });
-    tick(300);
+    tick(MAX_REQUEST_DELAY);
   }));
 
   it('should return photo with custom size', fakeAsync(() => {
@@ -56,6 +57,6 @@ describe('PhotoService', () => {
       expect(result.url.includes(PhotoService.DEFAULT_SIZE)).toBeFalsy();
       expect(result.url.includes('700')).toBeTruthy();
     });
-    tick(300);
+    tick(MAX_REQUEST_DELAY);
   }));
 });

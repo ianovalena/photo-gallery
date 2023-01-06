@@ -2,6 +2,7 @@ import { fakeAsync, TestBed, tick } from '@angular/core/testing';
 
 import { FavoritesService } from './favorites.service';
 import { StorageService } from './storage.service';
+import { MAX_REQUEST_DELAY } from './random-delay.helper';
 
 describe('FavoritesService', () => {
   let service: FavoritesService;
@@ -34,7 +35,7 @@ describe('FavoritesService', () => {
     service = TestBed.inject(FavoritesService);
     expect(service.favorites.has(95)).toBeTruthy();
     service.removeFromFavorites(95);
-    tick(300);
+    tick(MAX_REQUEST_DELAY);
     expect(service.favorites.has(95)).toBeFalsy();
   }));
 
@@ -42,7 +43,7 @@ describe('FavoritesService', () => {
     service = TestBed.inject(FavoritesService);
     expect(service.favorites.has(32)).toBeFalsy();
     service.saveToFavorites(32);
-    tick(300);
+    tick(MAX_REQUEST_DELAY);
     expect(service.favorites.has(32)).toBeTruthy();
   }));
 });
