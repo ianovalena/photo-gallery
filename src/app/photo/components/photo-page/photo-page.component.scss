@@ -1,0 +1,23 @@
+.photo-page {
+  &__spinner-container {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+  }
+
+  &__photo {
+    width: 600px;
+    height: 600px;
+  }
+
+  &__button {
+    margin-left: 20px;
+  }
+}

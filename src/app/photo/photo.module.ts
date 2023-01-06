@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 
 import { PhotoRoutingModule } from './photo-routing.module';
 import { PhotoPageComponent } from './components/photo-page/photo-page.component';
+import { RouterModule } from '@angular/router';
+import { SharedModule } from '../shared/shared.module';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -11,7 +14,10 @@ import { PhotoPageComponent } from './components/photo-page/photo-page.component
   ],
   imports: [
     CommonModule,
-    PhotoRoutingModule
+    PhotoRoutingModule,
+    SharedModule,
+    RouterModule,
+    MatProgressSpinnerModule,
   ]
 })
 export class PhotoModule { }
